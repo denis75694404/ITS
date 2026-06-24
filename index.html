@@ -35,16 +35,17 @@ body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: #f0f2f7;
 .hero-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
 .hero-tag { background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.3); border-radius:20px; padding:4px 13px; font-size:0.72rem; font-weight:500; }
 .nav-index {
-  background:#fff; border-bottom:2px solid var(--gris-borde); padding:0 24px;
+  background:#fff; border-bottom:2px solid var(--gris-borde); padding:0 12px;
   display:flex; align-items:stretch;
   position:sticky; top:0; z-index:100; box-shadow:0 2px 12px rgba(0,0,0,0.07);
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
 }
 .nav-btn {
-  display:flex; align-items:center; gap:9px; padding:16px 22px;
+  display:flex; align-items:center; gap:9px; padding:14px 18px;
   font-size:0.85rem; font-weight:600; color:var(--texto-suave);
   cursor:pointer; border:none; background:none;
   border-bottom:3px solid transparent; margin-bottom:-2px;
-  transition:all 0.2s; white-space:nowrap;
+  transition:all 0.2s; white-space:nowrap; flex-shrink:0;
 }
 .nav-btn:hover { color:var(--azul-medio); background:var(--azul-claro); }
 .nav-btn.active { color:var(--azul-medio); border-bottom-color:var(--azul-medio); background:var(--azul-claro); }
@@ -193,7 +194,7 @@ body{font-family:'Inter',sans-serif;background:var(--gris-bg);color:var(--texto)
   .stat-num { font-size: 26px; font-weight: 700; color: #0f2040; }
   .stat-lbl { font-size: 11px; color: #6b7a90; margin-top: 2px; }
 
-  .staff-table-wrap { background: #fff; border: 1.5px solid #d8e0ee; border-radius: 8px; overflow: hidden; }
+  .staff-table-wrap { background: #fff; border: 1.5px solid #d8e0ee; border-radius: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   thead th { background: #0f2040; color: #e8edf5; font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; padding: 10px 14px; text-align: left; }
   tbody tr { border-bottom: 1px solid #e8edf5; }
@@ -256,13 +257,36 @@ body{font-family:'Inter',sans-serif;background:var(--gris-bg);color:var(--texto)
   .btn-primary { padding: 7px 18px; border-radius: 6px; font-size: 13px; font-weight: 500; cursor: pointer; background: #1a4fbd; color: #fff; border: none; }
   .btn-ghost { padding: 7px 18px; border-radius: 6px; font-size: 13px; cursor: pointer; background: #f0f3f8; color: #4a5568; border: 1px solid #d0d7e3; }
 
+  /* ── Mobile responsive tables ── */
+  @media (max-width: 640px) {
+    .container { padding: 12px !important; }
+    .staff-table-wrap { border-radius: 6px; }
+    table { font-size: 11px; min-width: 480px; }
+    thead th { font-size: 10px; padding: 8px 10px; }
+    tbody td { padding: 8px 10px; }
+    .proc-intro { font-size: 13px; }
+    .tabs { gap: 4px; }
+    .proc-tab-btn { padding: 8px 10px; font-size: 12px; }
+    .plano-wrap { flex-direction: column; }
+    .plano-box { min-width: unset; }
+    .detail-panel { min-width: unset; width: 100%; }
+    .staff-stats { grid-template-columns: 1fr 1fr; }
+    .flow-card-head { flex-wrap: wrap; gap: 4px; }
+    .sim-q { flex-direction: column; gap: 6px; }
+  }
+
 .proc-section-wrap .container { max-width:100%; padding:24px 20px; }
 @media(max-width:700px) {
-  .nav-btn { padding:12px 12px; font-size:0.72rem; gap:6px; }
   .intro-strip { grid-template-columns:1fr 1fr; }
   .intro-strip .intro-img:last-child { display:none; }
-  .hero-title { font-size:1.5rem; }
-  .main-hero { padding:22px 18px; }
+  .hero-title { font-size:1.4rem; }
+  .main-hero { padding:20px 16px; }
+  .hero-sub { font-size:0.82rem; }
+  .section-header { padding:14px 16px; gap:10px; }
+  .section-header-icon { font-size:1.5rem; }
+  .section-header-text h2 { font-size:1rem; }
+  .croquis-wrapper { padding:12px; }
+  .proc-section-wrap .container { padding:12px !important; }
 }
 </style>
 </head>
@@ -274,9 +298,9 @@ body{font-family:'Inter',sans-serif;background:var(--gris-bg);color:var(--texto)
     <h1 class="hero-title">Campaña de Detección y Prevención<br><span>VIH / ITS — El Agustino</span></h1>
     <p class="hero-sub">Documento técnico integrado: estadísticas epidemiológicas, croquis de puntos de campaña y procedimiento operativo completo para la intervención en campo.</p>
     <div class="hero-tags">
-      <span class="hero-tag">🔴 Distrito priorizado: El Agustino</span>
-      <span class="hero-tag">📈 TIA prom. 0.97 × 10,000 hab.</span>
-      <span class="hero-tag">👥 Jóvenes 18–29 años · 84% masculino</span>
+      <span class="hero-tag">🔴 El Agustino</span>
+      <span class="hero-tag">📈 TIA 0.97 × 10,000</span>
+      <span class="hero-tag">👥 18–29 años · 84% masc.</span>
       <span class="hero-tag">💉 94.6% transmisión sexual</span>
     </div>
   </div>
@@ -287,7 +311,7 @@ body{font-family:'Inter',sans-serif;background:var(--gris-bg);color:var(--texto)
     <span class="nav-num">1</span> 📊 Estadísticas
   </button>
   <button class="nav-btn" onclick="showMain('croquis', this)">
-    <span class="nav-num">2</span> 🗺️ Croquis de Campaña
+    <span class="nav-num">2</span> 🗺️ Croquis
   </button>
   <button class="nav-btn" onclick="showMain('procedimiento', this)">
     <span class="nav-num">3</span> 📋 Procedimiento
